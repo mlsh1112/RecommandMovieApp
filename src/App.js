@@ -1,25 +1,23 @@
-import logo from './logo.svg';
+import { Component } from 'react';
 import './App.css';
+import {BrowserRouter, Route} from 'react-router-dom'
+import Movie from './pages/movie'
+import home from './pages/home';
+import loading from './pages/loading'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+// Render: componentWillMount() -> render() -> compoenetDidMount()
+// Update: componentWillReciveProps() {컴포넌트가 새로운 props를 받았다} -> shouldCompoenentUpdate()
+class App extends Component {
+  render(){
+    return (
+        <div className="App">
+          <BrowserRouter>
+          <Route exact path='/' component={home}/>
+          <Route exact path='/loading/:genre' component={loading}/>
+          </BrowserRouter>
+        </div>
+      );
+  }
 }
 
 export default App;
